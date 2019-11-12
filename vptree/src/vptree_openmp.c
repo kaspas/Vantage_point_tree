@@ -9,18 +9,8 @@
 
 // type definition of vptree
 
-// ========== LIST OF ACCESSORS
-//! Build vantage-point tree given input dataset X
-/*!
-    \param X    Input data points, stored as [n-by-d] array
-    \param n    Number of data points (rows of X)
-    \param d    Number of dimensions (columns of X)
-    \return     The vantage-point tree
-*/
 
-#define MAX_THREADS 8 //max threads for nested call functions 
-#define LIMIT 100000//80000
-int threadCount = 0;
+#define LIMIT 100000
 
 
 void swap_double(double *a, double *b)
@@ -105,13 +95,14 @@ void dis(int *list,double *distance,double *X,int n,int d){
     }
 }
 
+
+// ========== LIST OF ACCESSORS
 //! Build vantage-point tree given input dataset X
 /*!
-
-  \param X      Input data points, stored as [n-by-d] array
-  \param n      Number of data points (rows of X)
-  \param d      Number of dimensions (columns of X)
-  \return The vantage-point tree
+    \param X    Input data points, stored as [n-by-d] array
+    \param n    Number of data points (rows of X)
+    \param d    Number of dimensions (columns of X)
+    \return     The vantage-point tree
 */
 vptree * buildvp(double *X,int n,int d)
 {
@@ -165,9 +156,7 @@ vptree *vpbuild(double *X,int *list,int n,int d){
         if(k>0 &&(n-k-1)>0){
             /**
              * Parallel execution under constrains
-             * if MAX_THREADS-threadCount >2 
-             * threadcount counts the current threads running recusvie function
-             * modthreadcount increase or decrease the threadcount with atomic operation
+             * n*d must be more than the Limit here 100k
              */
             if( n*d>=2*LIMIT){
                 //parallel section

@@ -4,20 +4,9 @@
 #include "vptree.h"
 #include <stdio.h>
 #include <string.h>
-#include <cilk/cilk.h>
-#include <cilk/cilk_api.h>
 
 #include <sys/time.h>
 
-// type definition of vptree
-// ========== LIST OF ACCESSORS
-//! Build vantage-point tree given input dataset X
-/*!
-    \param X    Input data points, stored as [n-by-d] array
-    \param n    Number of data points (rows of X)
-    \param d    Number of dimensions (columns of X)
-    \return     The vantage-point tree
-*/
 
 void swap_double(double *a, double *b)
 {

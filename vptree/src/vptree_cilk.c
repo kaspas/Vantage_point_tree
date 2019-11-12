@@ -10,17 +10,7 @@
 
 #include <sys/time.h>
 
-#define LIMIT 20000 //50000
-
-// type definition of vptree
-// ========== LIST OF ACCESSORS
-//! Build vantage-point tree given input dataset X
-/*!
-    \param X    Input data points, stored as [n-by-d] array
-    \param n    Number of data points (rows of X)
-    \param d    Number of dimensions (columns of X)
-    \return     The vantage-point tree
-*/
+#define LIMIT 20000 
 
 void swap_double(double *a, double *b)
 {
@@ -94,6 +84,15 @@ void dis(int *list,double *distance,double *X,int n,int d){
         }
     }
 }
+// type definition of vptree
+// ========== LIST OF ACCESSORS
+//! Build vantage-point tree given input dataset X
+/*!
+    \param X    Input data points, stored as [n-by-d] array
+    \param n    Number of data points (rows of X)
+    \param d    Number of dimensions (columns of X)
+    \return     The vantage-point tree
+*/
 
 vptree * buildvp(double *X,int n,int d)
 {
